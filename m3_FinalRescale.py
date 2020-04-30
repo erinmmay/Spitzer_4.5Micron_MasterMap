@@ -1,10 +1,10 @@
 bpath='/Volumes/emay_spitzer/'
 dpath='Data/Spitzer/Spitzer_Map_Ch2/S19.2.0/'
-rpath='Analyses/bd067bo21/run_ap2000715/'
+rpath='Analyses/bd067bo21/run/'
 ch = 2
 
-apdir='ap2000715'
-apsize=2.00
+apdir='ap4000715'
+apsize=4.00
 
 tpath=bpath
 
@@ -56,8 +56,8 @@ savefile_name.close()
 
 ###############
 #### open rescale files
-nloop = 14
-do_rescale = 2              #1 = time averaged, 2 = group averaged
+nloop = 10
+do_rescale = 1              #1 = time averaged, 2 = group averaged
 
 savefile_name = open(bpath+rpath+'/ch'+str(ch)+'_'+apdir+'_'+'filesave_'+str(nloop).zfill(4)+'.npz','rb')
 rdiff_arr,trescfc = pickle.load(savefile_name)

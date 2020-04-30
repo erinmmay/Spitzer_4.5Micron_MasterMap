@@ -1,12 +1,12 @@
 bpath='/Volumes/emay_spitzer/'
 dpath='Data/Spitzer/Spitzer_Map_Ch2/S19.2.0/'
-rpath='Analyses/bd067bo21/run_ap2000715/'
+rpath='Analyses/bd067bo21/run/'
 ch = 2
 
 plt_savepath = '/Users/mayem1/Desktop/AOR_frames/'
 
-apdir='ap2000715'
-apsize=2.00
+apdir='ap4000715'
+apsize=4.00
 
 tpath=bpath
 
@@ -83,7 +83,7 @@ FullFs,FullXs,FullYs,FullFe,aornar,t0_arr,aorgrp = pickle.load(savefile_name)
 savefile_name.close()
 
 #### open index arrays for binning and interpolation
-savefile_name = open(bpath+rpath+'/ch'+str(ch)+'_'+'BinBilin_Inds_grouped.npz','rb')     
+savefile_name = open(bpath+rpath+'/ch'+str(ch)+'_'+apdir+'_'+'BinBilin_Inds_grouped.npz','rb')     
 BinInds, BilinInds, BilinDist = pickle.load(savefile_name)
 savefile_name.close()
 
@@ -94,7 +94,7 @@ nloop = 0
 rstrt = False
 ndone = 0
 rdiff = 0.9e-5  #10ppm precision in flux
-maxloops = 1
+maxloops = 100
 
 
 if nloop>0:
@@ -306,7 +306,7 @@ while np.round(np.sqrt(np.mean((rdiff_arr-1.0)**2.)),5) > rdiff and nloop <= max
     plt.annotate(np.round(np.sqrt(np.mean((trescfc[tindexes3]-trescfc3)**2.)),6),xy=(np.mean(t0_arr[tindexes3]),1.003),fontsize=15,ha='center',rotation='vertical')
     plt.annotate(np.round(np.sqrt(np.mean((trescfc[tindexes4]-trescfc4)**2.)),6),xy=(np.mean(t0_arr[tindexes4]),1.003),fontsize=15,ha='center',rotation='vertical')
 
-    # plt.ylim(0.996,1.004)
+    plt.ylim(0.996,1.004)
 
     plt.savefig(bpath+rpath+'/ch'+str(ch)+'_'+apdir+'_'+str(nloop).zfill(4)+'.png')
     #plt.show()

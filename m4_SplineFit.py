@@ -1,10 +1,10 @@
 bpath='/Volumes/emay_spitzer/'
 dpath='Data/Spitzer/Spitzer_Map_Ch2/S19.2.0/'
-rpath='Analyses/TY4212o11/run/'
+rpath='Analyses/bd067bo21/run/'
 ch = 2
 
-apdir='ap2000715'
-apsize=2.00
+apdir='ap4000715'
+apsize=4.00
 
 tpath=bpath
 
@@ -383,6 +383,8 @@ if do_rescale==1:
 if do_rescale==2:
     savefile_name = open(bpath+rpath+'/ch'+str(ch)+'_'+apdir+'_master_map_AvgGrp_G'+str(int(grid_step*10**4.))+'_P'+str(int(npoints))+'_K'+str(int(knot_steps*10**4.))+'.npz','wb')
 
-pickle.dump([OutFull,xfull, yfull],savefile_name)
+
+nan_inds = np.isnan(OutFull)
+pickle.dump([OutFull[~nan_inds],xfull[~nan_inds], yfull[~nan_inds]],savefile_name)
 savefile_name.close()
  

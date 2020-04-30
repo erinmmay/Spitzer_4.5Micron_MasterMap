@@ -192,7 +192,6 @@ BilinDist = []
 #     print('      time to bin: ', time2-time1,'      time to interp: ', time3-time2)
  
 ##### FOR GROUPED AORS ####
-### THIS PART IS NOT APERTURE DEPENDENT. CAN COMMENT OUT FOR ADDITIONAL APERTURE RUNS ###
 print(' ')
 print('########################################################')
 print('# Creating lists of binning and interpolation indexes  #')
@@ -202,7 +201,7 @@ total_aors = 0
 for ni in range(0,np.nanmax(aorgrp)+1):
     group_AORs = np.where(aorgrp == ni) [0]
     total_aors += len(group_AORs)
-    
+
     print('--->',ni, total_aors, group_AORs,AORs_act[group_AORs])
     if not os.path.exists(a+'/'):
         print('not ran')
@@ -230,8 +229,8 @@ for ni in range(0,np.nanmax(aorgrp)+1):
     print('      time to bin: ', time2-time1,'      time to interp: ', time3-time2)
 
 
-savefile_name = open(bpath+rpath+'/ch'+str(ch)+'_'+'BinBilin_Inds_grouped.npz','wb')
+savefile_name = open(bpath+rpath+'/ch'+str(ch)+'_'+apdir+'_'+'BinBilin_Inds_grouped.npz','wb')
 pickle.dump([BinInds, BilinInds, BilinDist],savefile_name)
 savefile_name.close()
-#
-#
+
+
